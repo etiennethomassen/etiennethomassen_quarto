@@ -1,0 +1,29 @@
+---
+title: Migrating to Quarto
+date: 2025-12-30
+description: Notes on migrating my personal website from Hugo to Quarto
+categories:
+ - Quarto
+ - Hugo
+lang: en
+toc: true
+draft: true
+---
+
+During the last weeks of 2025 I decided to migrate my [Hugo](https://gohugo.io) driven personal website to [Quarto](https://quarto.org). I have been contemplating taking this step several times before, but decided against it as I found I much preferred the freedom Hugo gives you on designing the structure and layout. But I have been using Quarto more and more for document generation and have grown to really appreciate the power and ease it brings me when working with code snippets directly in my reports and how easy things like references work for instance. Time to take the plunge! This posts highlights some of the solutions I implemented to get the structure and look I wanted.
+
+## Multilingual site
+
+I set up my site to serve pages in Dutch as well as English. Quarto does not natively support the use of more than one language, but there are several options to get it to work. I first tried [{babelquarto}](https://docs.ropensci.org/babelquarto/). Somehow however this solution did not really click with me. I also read I could use [profiles](https://quarto-dev.marioangst.com/en/blog/posts/multi-language-quarto/) and on GitHub I found an [extensive discussion](https://github.com/quarto-dev/quarto-cli/issues/275) on the topic. There I found the [solution of cuttercom](https://github.com/quarto-dev/quarto-cli/issues/275#issuecomment-1234176431), which is essentially simply a setup with two websites beside each other. I like the simplicity of this approach so chose to follow this example. The two parts of the site are connected through a language switcher in the navigation bar. I use a small script to combine both parts of the website and push it to my server.
+
+## Listings
+
+Quarto has several options to list the post of a blog or an other list of items called [document listings](https://quarto.org/docs/websites/website-listings.html). This site has both a blog and a list of publications that use such a listing. I like the standard functionality of those listings, but find the standard options are more suited for a regular blog. For the publications I wanted a different look, which required changing the way the listing is generated. The site now uses a [custom listing](https://quarto.org/docs/websites/website-listings-custom.html) using [EJS](https://ejs.co/) so I can list the publications per year and display the authors anjd place it has been published on the way I like it.
+
+## Looks
+
+To migrate from Hugo I did not want
+
+## Visitors
+
+

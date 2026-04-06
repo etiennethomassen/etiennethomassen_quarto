@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Canonical sitemaps
+Sitemap: https://etiennethomassen.nl/sitemap.xml
+Sitemap: https://etiennethomassen.nl/nl/sitemap.xml
+Sitemap: https://etiennethomassen.nl/en/sitemap.xml
+

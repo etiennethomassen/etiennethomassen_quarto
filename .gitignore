@@ -1,0 +1,6 @@
+deploy.env
+_site/
+_freeze/
+_extensions/
+.Rhistory
+.quarto/

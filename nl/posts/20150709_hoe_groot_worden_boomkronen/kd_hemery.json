@@ -1,0 +1,49 @@
+{
+  "data": {"url": "/media/notities/20150709/2015-07-09-boomkronen-hemery_etal-2005.csv"},
+  "encoding": {"x": {"field": "DBH", "type": "quantitative"}},
+  "layer": [
+    {
+      "encoding": {
+        "color": {"field": "Boomsoort", "type": "nominal"},
+        "y": {"field": "Kd-ratio", "type": "quantitative"}
+      },
+      "layer": [
+        {"mark": "line"},
+        {"transform": [{"filter": {"param": "hover", "empty": false}}], "mark": "point"}
+      ]
+    },
+    {
+      "transform": [{"pivot": "Boomsoort", "value": "Kd-ratio", "groupby": ["DBH"]}],
+      "mark": "rule",
+      "encoding": {
+        "opacity": {
+          "condition": {"value": 0.3, "param": "hover", "empty": false},
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "Berk", "type": "quantitative"},
+          {"field": "Beuk", "type": "quantitative"},
+          {"field": "Es", "type": "quantitative"},
+          {"field": "Gewone esdoorn", "type": "quantitative"},
+          {"field": "Inlandse eik", "type": "quantitative"},
+          {"field": "Lijsterbes", "type": "quantitative"},
+          {"field": "Populier", "type": "quantitative"},
+          {"field": "Tamme kastanje", "type": "quantitative"},
+          {"field": "Walnoot", "type": "quantitative"},
+          {"field": "Winterlinde", "type": "quantitative"},
+          {"field": "Zoete kers", "type": "quantitative"}
+        ]
+      },
+      "params": [{
+        "name": "hover",
+        "select": {
+          "type": "point",
+          "fields": ["DBH"],
+          "nearest": true,
+          "on": "pointerover",
+          "clear": "pointerout"
+        }
+      }]
+    }
+  ]
+}

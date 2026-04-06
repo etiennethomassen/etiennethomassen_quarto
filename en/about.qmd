@@ -1,0 +1,11 @@
+---
+title: "About this website"
+lang: en
+---
+
+![Etiënne Thomassen during an excursion](/assets/img/20130413_etienne_thomassen.jpg){.full_smaller .no-caption}
+
+I am Etiënne Thomassen and this is my **personal** website.
+
+I am a forest ecologist and forester at [Bosgroep Zuid Nederland](https://bosgroepen.nl/bosgroep-zuid-nederland/) and a PhD candidate at [Wageningen University](https://wur.nl/en/). I am interested in the growth and development of forests and how to steer those processes. Currently, I am mainly working on the topics of forest climate adaptation and enhancing resilience of forests.
+

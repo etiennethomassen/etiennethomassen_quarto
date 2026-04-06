@@ -1,0 +1,276 @@
+---
+title: "Houtprijzen: wat brengt topkwaliteit op?"
+date: 2014-01-10
+description: "Houtprijzen: wat brengt topkwaliteit op?"
+categories:
+ - Houtprijzen
+ - Houtveiling
+lang: nl
+toc: true
+---
+
+In het hedendaags bosbeheer wordt vaak een deel van het potentiële productievolume gebruikt voor het creëren van mooie bosbeelden en hoge natuurwaarden. Daardoor wordt minder hout verkocht en moet het hout per kubieke meter meer opbrengen, of moet er efficiënter gewerkt worden. Om tot een rendabel bosbeheer te komen wordt in Nederland vooral geprobeerd de uitgaven te beperken. Voor een hogere houtprijs is een hogere houtkwaliteit en een goede vermarkting noodzakelijk. Productie van kwaliteitshout vergt echter investeringen. Die investeringen worden door de gemiddelde Nederlandse bosbouwer voornamelijk beoordeeld als kostenpost. Inkomsten in de toekomst zijn immers onzeker.
+
+Maar wat voor prijzen worden in het buitenland nu eigenlijk betaald voor hoogwaardig hout? Zou het met zulke prijzen in het vooruitzicht niet toch de investering waard kunnen zijn? Toch wel opsnoeien? Kunnen we onze mooiste bomen nog wat dikker laten worden, wetende dat ze straks echt nog wel hun geld op gaan brengen? Kunnen we gaan werken aan nog veel mooier bos?
+
+In dit artikel probeer ik een inzicht te verschaffen wat topkwaliteit hout de afgelopen jaren in het buitenland heeft opgebracht.
+
+## Duits-Franse kwaliteitshoutveiling
+
+De Duits-Franse grensregio heeft sinds 20 jaar een gezamenlijke houtveiling. De Duitse naam voor dit type veiling is een _Submission_. Een _Submission_ is een schriftelijke veiling, waarbij op de loten kan worden ingeschreven. Op deze veiling wordt hoogwaardig hout aangeboden uit Frankrijk en Duitsland(Saarland en Rheinland-Pfalz). Uit Wallonië is in 2013 voor het eerst een kleine partij ingebracht. Het hout wordt op meerdere locaties bij elkaar gebracht wordt. In totaal is er in de afgelopen 20 jaar ruim 28.500 kubieke meter kwaliteitshout verkocht, vorig jaar 850.
+
+In onderstaande grafiek worden de gemiddelde prijs per kubieke meter weergegeven sinds 1998. Opgenomen zijn eik, zoete kers, gewone esdoorn en elsbes (_Sorbus torminalis_).
+
+
+```{r}
+#| label: fig-prijsontwikkeling-DuFr
+#| fig-cap: "Gemiddelde prijs in Euro per kubieke meter zonder schors, van hout verkocht op de Duits-Franse houtveiling vanaf 1998 tot en met 2013."
+#| echo: false
+#| message: false
+#| warning: false
+
+library(readr)
+library(ggplot2)
+library(plotly)
+library(dplyr)
+
+df <- read_csv("csv/2014-01-07-prijsontwikkeling-duits-franse-veiling.csv", show_col_types = FALSE)
+
+p <- ggplot(
+  df,
+  aes(
+    x = Jaar,
+    y = Prijs,
+    color = Boomsoort,
+    group = Boomsoort
+  )
+) +
+  geom_line(linewidth = .5) +
+  # geom_point(size = 2) +
+  labs(
+    x = "Jaar",
+    y = "Prijs",
+    color = "Boomsoort"
+  ) +
+  theme_minimal()
+
+ggplotly(p, 
+  tooltip = c("x", "y", "colour")
+  # height = 450
+  ) |>
+  layout(
+    paper_bgcolor = "rgba(0,0,0,0)",
+    plot_bgcolor  = "rgba(0,0,0,0)"
+  )
+```
+
+
+Omdat de aanvankelijk erg hoge _gemiddelde_ prijs voor elsbes de prijsontwikkeling van de meer reguliere soorten wat minder zichtbaar maakt hieronder dezelfde tabel zonder de elsbes.
+
+```{r}
+#| label: fig-prijsontwikkeling-DuFr-zonder-Elsbes
+#| fig-cap: "Gemiddelde prijs in Euro per kubieke meter zonder schors, van hout verkocht op de Duits-Franse houtveiling vanaf 1998 tot en met 2013. Zonder Elsbes."
+#| echo: false
+#| message: false
+#| warning: false
+
+df <- read_csv("csv/2014-01-07-prijsontwikkeling-duits-franse-veiling.csv", show_col_types = FALSE)
+df <- df |>
+  filter(Boomsoort != "Elsbes")
+
+
+p <- ggplot(
+  df,
+  aes(
+    x = Jaar,
+    y = Prijs,
+    color = Boomsoort,
+    group = Boomsoort
+  )
+) +
+  geom_line(linewidth = .5) +
+  # geom_point(size = 2) +
+  labs(
+    x = "Jaar",
+    y = "Prijs",
+    color = "Boomsoort"
+  ) +
+  theme_minimal()
+
+ggplotly(p, 
+  tooltip = c("x", "y", "colour")
+  # height = 450
+  ) |>
+  layout(
+    paper_bgcolor = "rgba(0,0,0,0)",
+    plot_bgcolor  = "rgba(0,0,0,0)"
+  )
+```
+
+
+Forêt Wallone bracht in 2013 voor het eerst hout naar de veiling. Vijf eiken topstammen. Over de proef verscheen in Forêt Wallone een uitgebreid artikel. Het overzicht van de biedingen op de eikenstammen is daar ook gepubliceerd en hier overgenomen.
+
+```{r}
+#| label: fig-biedingen-eikenstammen
+#| fig-cap: "Biedingen op vijf eikenstammen bij op d Frans-Duitse houtveiling."
+#| echo: false
+
+df <- read_csv("csv/2014-01-07-eikenstammen.csv", show_col_types = FALSE)
+knitr::kable(df)
+```
+
+## Zwitserland
+
+In het Zwitserse kanton Zürich wordt sinds 1998 een kwaliteitshoutveiling georganisseerd door de Holzverwertungsgenossenschaft HVG. Ook hier gaat het om een Submission. Waarbij het hout verzameld wordt in Katzensee bij Zürich, in Winterthur en sinds 2009 in Horw (kanton Luzern). Verkocht worden loof- en naaldhout fineerstammen, hoogwaardig timmerhout en mooie stammen van zeldzame boomsoorten.
+
+Er worden veel verschillende soorten verkocht, voor de duidelijkheid van de grafieken heb ik naald- en loofhout gesplitst.  Steeds wordt de _gemiddelde_ prijs weergegeven in Zwitserse Frank per kubieke meter. De Zwitserse frank is de laatste jaren ongeveer € 1,20 - 1,30 waard.
+
+### Loofhout
+
+```{r}
+#| label: fig-prijsontwikkeling-Zwitserland-loofhout
+#| fig-cap: "Gemiddelde prijs in Zwitserse Frank per kubieke meter, van loofhout verkocht op de een Zwitserse houtveiling vanaf 2007 tot en met 2013."
+#| echo: false
+#| message: false
+#| warning: false
+
+df <- read_csv("csv/2014-01-07-zwitserland.csv", show_col_types = FALSE)
+df <- df |>
+  filter(!Boomsoort %in% c("Cipres", "Douglas","Lariks", "Taxus", "Weymouthden","Zilverden"))
+
+
+p <- ggplot(
+  df,
+  aes(
+    x = Jaar,
+    y = Gemiddelde,
+    color = Boomsoort,
+    group = Boomsoort
+  )
+) +
+  geom_line(linewidth = .5) +
+  # geom_point(size = 2) +
+  labs(
+    x = "Jaar",
+    y = "Gemiddelde",
+    color = "Boomsoort"
+  ) +
+  theme_minimal()
+
+ggplotly(p, 
+  tooltip = c("x", "y", "colour")
+  ) |>
+  layout(
+    paper_bgcolor = "rgba(0,0,0,0)",
+    plot_bgcolor  = "rgba(0,0,0,0)"
+  )
+
+```
+
+
+De duurste stam van 2013 was een gewone esdoorn van 8.626 Zwitserse Frank per kubieke meter. De duurste eik CHF 951 euro per kubieke meter en de duurste beuk CHF 223.
+
+### Naaldhout
+
+```{r}
+#| label: fig-prijsontwikkeling-Zwitserland-naaldhout
+#| fig-cap: "Gemiddelde prijs in Zwitserse Frank per kubieke meter, van naaldhout verkocht op de een Zwitserse houtveiling vanaf 2007 tot en met 2013."
+#| echo: false
+#| message: false
+#| warning: false
+
+library(readr)
+library(ggplot2)
+library(plotly)
+
+df <- read_csv("csv/2014-01-07-zwitserland.csv", show_col_types = FALSE)
+df <- df |>
+  filter(Boomsoort %in% c("Cipres", "Douglas","Lariks", "Taxus", "Weymouthden","Zilverden"))
+
+
+p <- ggplot(
+  df,
+  aes(
+    x = Jaar,
+    y = Gemiddelde,
+    color = Boomsoort,
+    group = Boomsoort
+  )
+) +
+  geom_line(linewidth = .5) +
+  # geom_point(size = 2) +
+  labs(
+    x = "Jaar",
+    y = "Gemiddelde",
+    color = "Boomsoort"
+  ) +
+  theme_minimal()
+
+ggplotly(p, 
+  tooltip = c("x", "y", "colour")
+  ) |>
+  layout(
+    paper_bgcolor = "rgba(0,0,0,0)",
+    plot_bgcolor  = "rgba(0,0,0,0)"
+  )
+
+```
+
+De duurste lariks bracht in 2013 999 Zwitserse Frank per kubieke meter op. Grove den CHF 336, Douglas CHF 501 en Fijnspar CHF 751.
+
+## Wertholzsubmission Rheinland
+
+Als laatste een kwaliteitshoutinschrijving, in de regio Bonn. In 2013 vond de 48ste veiling plaats met hout uit vier boswachterijen uit de regio, 1 boswachterij uit Rheinland-Pfalz, 2 stadsboswachterijen en vier particuliere bosbedrijven.
+
+```{r}
+#| label: fig-prijsontwikkeling-Rheinland
+#| fig-cap: "Gemiddelde prijs in Euro per kubieke meter zonder schors, van hout verkocht op de een de Wertholzsubmission Rheinland houtinschrijving vanaf 2008 tot en met 2013."
+#| echo: false
+#| message: false
+#| warning: false
+
+library(readr)
+library(ggplot2)
+library(plotly)
+
+df <- read_csv("csv/2014-01-07-submissionrheinland.csv", show_col_types = FALSE)
+
+p <- ggplot(
+  df,
+  aes(
+    x = Jaar,
+    y = Prijs,
+    color = Boomsoort,
+    group = Boomsoort
+  )
+) +
+  geom_line(linewidth = .5) +
+  # geom_point(size = 2) +
+  labs(
+    x = "Jaar",
+    y = "Prijs",
+    color = "Boomsoort"
+  ) +
+  theme_minimal()
+
+ggplotly(p, 
+  tooltip = c("x", "y", "colour")
+  ) |>
+  layout(
+    paper_bgcolor = "rgba(0,0,0,0)",
+    plot_bgcolor  = "rgba(0,0,0,0)"
+  )
+```
+
+Naast het loofhout werd in totaal 74 kubieke meter kwaliteitsnaaldhout aangeboden, waarvan 45 kuub Douglas. Gemiddeld werd hier 162 €/m voor betaald. Voor douglasstammen met een gemiddelde diameter boven de 80 is gemiddeld € 248 betaald.
+
+## Dankwoord
+
+Hartelijk dank aan Georg Josef Wilhelm voor de hulp bij de zoektocht naar gegevens en het aandragen ervan. Dankzij Frederik Vaes kreeg ik het Waalse artikel en Bart Nyssen heeft het deels voor mij vertaald.
+
+## Bronnen
+
+- **Georg Josef Wilhelm, Gernot Scheerer, Bruno Vuidel & François Baar**. 2013. _20 Jahre Deutsch-französische Wertholzsubmission: 28.500 m³ edle Hölzer aus dem Osten des Pariser Beckens_. Holz-Zentralblatt 46/2013 
+- **François Baar, Sami Ben Mena, François Dewez, Gaëtan Graux, Dominique Pauwels, Sébastien Petit & Christine Sanchez**. 2013. _La haute qualité des bois Wallons mise en lumiére lors de la vente Franco-Allemande de feulillus précieux 2013_. Forêt Wallone nr 125 - juli/augustus 2013
+- _Holzverwertungsgenossenschaft HVG_ [http://www.wertholz-hvg.ch](http://www.wertholz-hvg.ch)
+- _Wertholzsubmission Rheinland 2013, Hohe Nachfrage und gute Preise_ [http://www.wald-und-holz.nrw.de/wald-und-holz-nrw/aktuelles-und-presse/aktuelle-meldung/pm/wertholzsubmission-rheinland-2013.html](http://www.wald-und-holz.nrw.de/wald-und-holz-nrw/aktuelles-und-presse/aktuelle-meldung/pm/wertholzsubmission-rheinland-2013.html)

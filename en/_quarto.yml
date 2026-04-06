@@ -1,0 +1,46 @@
+project:
+  type: website
+  output-dir: ../_site/en
+  resources:
+    - assets
+
+lang: en
+
+website:
+  description: "Etiënne Thomassen"
+  site-url: https://etiennethomassen.nl
+  title: "Etiënne Thomassen"
+  site-path: /en/
+  favicon: https://etiennethomassen.nl/favicon.ico
+  navbar:
+    right:
+      - text: Notes
+        href: /posts/
+      - text: Publications
+        href: /publications/
+      - text: About
+        href: /about.html
+      - text: NL
+        href: ../nl/
+
+format:
+  html:
+    link-external-icon: true
+    theme:
+      - cosmo
+      - brand
+      - assets/scss/custom.scss
+    css:
+      - assets/fonts/gentium/stylesheet.css
+      - assets/fonts/aller/stylesheet.css
+      - assets/fonts/entypo-social/stylesheet.css
+      - assets/fonts/inter/stylesheet.css
+      - assets/fonts/gentium_plus/stylesheet.css
+      - assets/css/styles.css
+    include-in-header: 
+      - assets/incl/header_includes.html
+      - assets/incl/hreflang.html
+    include-after-body:
+      - assets/incl/footer.html
+      - assets/incl/simple_analytics.html
+

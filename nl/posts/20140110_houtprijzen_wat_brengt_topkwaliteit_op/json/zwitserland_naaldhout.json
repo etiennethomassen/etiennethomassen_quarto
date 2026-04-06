@@ -1,0 +1,51 @@
+{
+  "data": {"url": "/media/notities/20140110/2014-01-07-zwitserland.csv"},
+  "transform": [{"filter": {"field": "Boomsoort", "oneOf": ["Weymouthden",
+  							"Douglas",
+  							"Zilverden",
+  							"Lariks",
+							"Taxus",
+  							"Cipres"
+  							]}}],
+  "encoding": {"x": {"field": "Jaar", "type": "temporal"}},
+  "layer": [
+    {
+      "encoding": {
+        "color": {"field": "Boomsoort", "type": "nominal"},
+        "y": {"field": "Gemiddelde", "type": "quantitative"}
+      },
+      "layer": [
+        {"mark": "line"},
+        {"transform": [{"filter": {"param": "hover", "empty": false}}], "mark": "point"}
+      ]
+    },
+    {
+      "transform": [{"pivot": "Boomsoort", "value": "Gemiddelde", "groupby": ["Jaar"]}],
+      "mark": "rule",
+      "encoding": {
+        "opacity": {
+          "condition": {"value": 0.3, "param": "hover", "empty": false},
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "Weymouthden", "type": "quantitative"},
+          {"field": "Douglas", "type": "quantitative"},
+          {"field": "Zilverden", "type": "quantitative"},
+          {"field": "Lariks", "type": "quantitative"},
+          {"field": "Taxus", "type": "quantitative"},
+          {"field": "Cipres", "type": "quantitative"}
+        ]
+      },
+      "params": [{
+        "name": "hover",
+        "select": {
+          "type": "point",
+          "fields": ["Gemiddelde"],
+          "nearest": true,
+          "on": "pointerover",
+          "clear": "pointerout"
+        }
+      }]
+    }
+  ]
+}

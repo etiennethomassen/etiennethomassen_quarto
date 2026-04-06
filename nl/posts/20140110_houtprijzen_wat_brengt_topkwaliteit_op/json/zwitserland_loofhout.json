@@ -1,0 +1,77 @@
+{
+  "data": {"url": "/media/notities/20140110/2014-01-07-zwitserland.csv"},
+  "transform": [{"filter": {"field": "Boomsoort", "oneOf": ["Appelboom",
+  							"Perenboom",
+  							"Elsbes",
+  							"Meelbes",
+							"Berk",
+  							"Zwarte els",
+  							"Zoete kers", 
+  							"Eik",
+  							"Amerikaanse eik", 
+  							"Es", 
+  							"Gewone esdoorn",
+  							"Noorse esdoorn",
+  							"Beuk",
+  							"Haagbeuk",
+  							"Linde",
+  							"Iep",
+  							"Tamme kastanje",
+  							"Es",
+  							"Walnoot",
+  							"Populier"
+  							]}}],
+  "encoding": {"x": {"field": "Jaar", "type": "temporal"}},
+  "layer": [
+    {
+      "encoding": {
+        "color": {"field": "Boomsoort", "type": "nominal"},
+        "y": {"field": "Gemiddelde", "type": "quantitative"}
+      },
+      "layer": [
+        {"mark": "line"},
+        {"transform": [{"filter": {"param": "hover", "empty": false}}], "mark": "point"}
+      ]
+    },
+    {
+      "transform": [{"pivot": "Boomsoort", "value": "Gemiddelde", "groupby": ["Jaar"]}],
+      "mark": "rule",
+      "encoding": {
+        "opacity": {
+          "condition": {"value": 0.3, "param": "hover", "empty": false},
+          "value": 0
+        },
+        "tooltip": [
+          {"field": "Amerikaanse eik", "type": "quantitative"},
+          {"field": "Appelboom", "type": "quantitative"},
+          {"field": "Berk", "type": "quantitative"},
+          {"field": "Beuk", "type": "quantitative"},
+          {"field": "Eik", "type": "quantitative"},
+          {"field": "Elsbes", "type": "quantitative"},
+          {"field": "Es", "type": "quantitative"},
+          {"field": "Gewone esdoorn", "type": "quantitative"},
+          {"field": "Haagbeuk", "type": "quantitative"},
+          {"field": "Iep", "type": "quantitative"},
+          {"field": "Linde", "type": "quantitative"},
+          {"field": "Meelbes", "type": "quantitative"},
+          {"field": "Noorse esdoorn", "type": "quantitative"},
+          {"field": "Perenboom", "type": "quantitative"},
+          {"field": "Populier", "type": "quantitative"},
+          {"field": "Walnoot", "type": "quantitative"},
+          {"field": "Zoete kers", "type": "quantitative"},
+          {"field": "Zwarte els", "type": "quantitative"}
+        ]
+      },
+      "params": [{
+        "name": "hover",
+        "select": {
+          "type": "point",
+          "fields": ["Gemiddelde"],
+          "nearest": true,
+          "on": "pointerover",
+          "clear": "pointerout"
+        }
+      }]
+    }
+  ]
+}

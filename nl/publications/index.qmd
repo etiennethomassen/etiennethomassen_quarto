@@ -1,0 +1,9 @@
+---
+title: Publicaties
+listing:
+  contents: .
+  sort: "date desc"
+  template: pub-year.ejs
+  fields: [title, type, date, authors, book, platform, journal, publisher]
+---
+

@@ -1,0 +1,9 @@
+{
+"data": {"url": "/media/notities/20150709/2015-07-09-boomkronen-hein-2003.csv"},
+"mark": "line",
+"encoding": {
+    "x": {"field": "DBH", "type": "quantitative"},
+    "y": {"field": "Kroondiameter", "type": "quantitative"},
+    "color": {"field": "Boomsoort", "type": "nominal"}
+    }
+}

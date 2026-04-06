@@ -1,0 +1,431 @@
+/*-- scss:defaults --*/
+// Base document colors
+// $body-bg: #181818;
+$body-bg: #fcfcfc;
+$body-color: #222;
+$link-color: #0cb381; /*#03fcb1;*/
+
+$font-family-sans-serif: "Inter", "Aller", system-ui, sans-serif;
+
+// Code blocks
+// $code-block-bg-alpha: -.9;
+//
+// body {
+//   font-family: "Inter", "Aller", system-ui, sans-serif;
+// }
+//
+h1, h2, h3, h4 {
+  font-family: "Gentium Plus", "Gentium Book Plus", serif;
+  // font-weight: bold;
+}
+
+#intro h1 {
+  color: #333; /*#03fcb1;*/
+}
+
+a:link, a:visited {
+  text-underline-offset: -.25rem;
+  text-decoration-thickness: .5rem;
+  text-decoration-skip-ink: none;
+  text-decoration-color: #d9d9d9;
+  /*text-decoration: none;*/
+  /*border-bottom: 1px solid #ccc;*/
+  color: #333;
+  font-weight:450;
+}
+a:hover{
+  text-decoration-color: #ace2d1;
+  color: #008a62; /*#1e9472;*/ /*#3c6d5f;*/ /*#0cb381*/ /*#49c4a6*/
+  // font-weight:500;
+}
+
+
+
+.navbar-title{
+  font-family: "Gentium Plus", "Gentium Book Plus", serif;
+  font-style: italic;
+}
+// .navbar-brand-container a.navbar-brand:link, .navbar-brand-container a.navbar-brand:visited{
+a.navbar-brand:link, a.navbar-brand:visited{
+  text-decoration-line: underline;
+  text-underline-offset: -.25rem;
+  text-decoration-thickness: .5rem;
+  text-decoration-skip-ink: none;
+  text-decoration-color: #d9d9d9;
+}
+a.navbar-brand:hover{
+  text-decoration-line: underline;
+  text-underline-offset: -.25rem;
+  text-decoration-thickness: .5rem;
+  text-decoration-skip-ink: none;
+  text-decoration-color: #ffdee5; /*#ffbecb;*/ /*#f2a7b6;*/
+  color: #c73e5b; /*#bc1b3c;*/
+}
+
+.navbar-nav {
+  font-family: "Gentium Plus", "Gentium Book Plus", serif;
+}
+
+a.nav-link:hover{
+  text-decoration-line: underline;
+  text-underline-offset: -.25rem;
+  text-decoration-thickness: .5rem;
+  text-decoration-skip-ink: none;
+  text-decoration-color: #ffdee5; /*#ffbecb;*/ /*#f2a7b6;*/
+  color: #c73e5b; /*#bc1b3c;*/
+}
+
+.navbar .nav-link.active{
+  text-decoration-line: underline;
+  text-underline-offset: -.25rem;
+  text-decoration-thickness: .5rem;
+  text-decoration-skip-ink: none;
+  text-decoration-color: #d9d9d9; /*#ffbecb;*/ /*#f2a7b6;*/
+  color: #333;
+}
+.navbar .nav-link.active .menu-text {
+  color: #333;
+}
+
+
+/* Listing */
+.card-img-top {
+  display: none;
+}
+/* Hide listing thumbnails completely */
+.quarto-listing .listing-image {
+  display: none !important;
+}
+
+/* Reflow listing to single-column layout */
+.quarto-listing .listing-item {
+  grid-template-columns: 1fr !important;
+}
+/* Put date and title on the same line */
+.quarto-listing .listing-title {
+  display: inline;
+  margin-right: 1rem;
+}
+
+.quarto-listing .listing-date {
+  display: inline;
+  font-size: 0.9rem;
+  opacity: 0.65;
+  white-space: nowrap;
+}
+
+
+#publications ul{
+	padding-bottom: 1em;
+}
+	#publications ul li {
+		list-style-type: none;
+		margin-bottom: .9rem;
+		}
+
+		#publications ul li a {
+			font-size:2.4rem;
+			color: #1bbc9b; /*#69b890*/ /*7ed6aa;*/ /*99ffcc;*/ /*#008170;*/
+            /* color: #76b5c5; */
+			/* border-bottom: 1px solid #005B41; */
+			/* border-bottom: 1px solid #3d6953; */ 
+			border-bottom: 1px solid #206454;
+			font-weight: bold;
+			/* background-color: #111; */
+		}
+		#publications ul li a:hover {
+			font-size:2.4rem;
+			color: #49c4a6; /*#bc1b3c* /*#4a8065*/ /*99ffcc;*/ /*#008170;*/
+			/* border-bottom: 1px solid #3d6953; */
+			border-bottom: 2px solid #ace2d1;
+			/* color: #005B41; */
+			/* border-bottom: 1px solid #005B41; */
+			font-weight: bold;
+			/* background-color: #111; */
+		}
+		a.download-pdf:before {
+			font-family: 'Font Awesome 6 Free';
+			font-weight: 900;
+			content: "\f1c1";
+            display: inline-block;
+            padding-right: 5px;
+		}
+		a.link:before {
+			font-family: 'Font Awesome 6 Free';
+			font-weight: 900;
+			content: "\f0c1";
+            display: inline-block;
+            padding-right: 5px;
+        }
+
+/* Stijl voor de footer */
+/* Full-width background */
+footer {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+
+  background: #f6f6f6;
+  padding: 2rem 0;
+}
+
+
+/* -------------------------------------------------
+   QUARTO-SAFE FULL-WIDTH FOOTER (works in grid pages)
+   ------------------------------------------------- */
+
+/* If footer is inside Quarto's grid, force it to span all columns */
+#quarto-content footer.site-footer {
+  grid-column: 1 / -1;
+  justify-self: stretch;
+}
+
+/* Full viewport-width background, regardless of container/grid */
+footer.site-footer {
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+
+  background: #f6f6f6;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+/* Constrain inner content to align with page text */
+footer.site-footer .footer-inner {
+  max-width: 800px;       /* adjust to match your site */
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Two equal columns */
+footer.site-footer .footer-columns {
+  display: flex;
+  gap: 3rem;
+}
+
+footer.site-footer .footer-columns .column {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Typography */
+footer.site-footer h2 {
+  // font-size: 1.2rem;
+  margin: 0 0 0.75rem 0;
+}
+
+footer.site-footer ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+footer.site-footer li {
+  margin: 0 0 0.4rem 0;
+}
+//
+// footer.site-footer a {
+//   text-decoration: none;
+// }
+//
+// footer.site-footer a:hover {
+//   text-decoration: underline;
+// }
+//
+/* CC row spanning full width (under columns) */
+footer.site-footer .cc {
+  margin-top: 1rem;
+  // padding-top: 1rem;
+  // border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+/* -----------------------------------
+   Elders icons: aligned + consistent
+   ----------------------------------- */
+
+footer.site-footer ul.elders li {
+  position: relative;
+  padding-left: 1.8em;    /* space between icon and text */
+  line-height: 1.6;
+}
+
+footer.site-footer ul.elders li::before {
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  width: 1.6em;           /* fixed icon column */
+  text-align: center;
+  display: inline-block;
+}
+
+/* Free (solid) icons need weight 900 */
+footer.site-footer ul.elders li.work::before {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  content: "\f1bb";       /* tree */
+}
+
+footer.site-footer ul.elders li.wur::before {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  content: "\f19d";       /* graduation cap */
+}
+
+/* Brands need weight 400 */
+footer.site-footer ul.elders li.github::before {
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 400;
+  content: "\f09b";
+}
+
+footer.site-footer ul.elders li.instagram::before {
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 900;
+  content: "\f16d";
+}
+
+footer.site-footer ul.elders li.linkedin::before {
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 400;
+  content: "\f0e1";
+}
+
+footer.site-footer ul.elders li.mastodon::before {
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 400;
+  content: "\f4f6";
+}
+
+footer.site-footer ul.elders li.researchgate::before {
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 400;
+  content: "\f4f8";
+}
+
+/* Bluesky: FA doesn't always have it; fallback to a simple symbol */
+footer.site-footer ul.elders li.bluesky::before {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  content: "\f0c2";       /* cloud icon as placeholder */
+}
+
+/* Responsive: stack columns on small screens */
+@media (max-width: 700px) {
+  footer.site-footer .footer-columns {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+
+/* Publications*/
+
+#listing-listing {
+  display: block !important;
+}
+.pub-year-block{
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 1.5rem;
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+}
+
+.pub-items{
+  min-width: 0;
+}
+
+.pub-items ul{
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.pub-items li {
+  margin-bottom: 1rem;
+}
+
+.pub-year{
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.pub-items strong{
+  font-weight: 500;
+  font-size:1.4rem;
+}
+
+.pub-authors {
+  font-family: "Gentium Plus", "Gentium Book Plus", serif;
+  font-style: italic;
+  font-size:1.4rem;
+  font-weight: 500;
+  display: block;
+  margin-top: .2rem;
+}
+
+.pub-platform {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  display: block;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .pub-year-block {
+    grid-template-columns: 1fr;
+  }
+  .pub-year {
+    text-align: left;
+  }
+}
+
+
+/* category buttons*/
+.listing-category{border: none}
+
+
+/* External links*/
+a.external::after{
+  content: none !important;
+  display: none !important;
+  // -webkit-mask: none !important;
+  // mask: none !important;
+  background: none !important;
+}
+
+a.external::after {
+  content: "" !important;
+  display: inline-block !important;
+  width: 0.75em;
+  height: 0.75em;
+  margin-left: 0.25em;
+  vertical-align: 0.1em;
+
+  background-color: currentColor !important;
+  opacity: 0.7;
+
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3z'/%3E%3Cpath d='M19 19H5V5h7V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7z'/%3E%3C/svg%3E") no-repeat 50% 50%;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3z'/%3E%3Cpath d='M19 19H5V5h7V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7z'/%3E%3C/svg%3E") no-repeat 50% 50%;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+}
+
+/* Icon hover behavior (optional) */
+a.external:hover::after,
+a[target="_blank"]:hover::after,
+a[rel~="external"]:hover::after {
+  opacity: 1;
+}
+
+footer a.external::after,
+#shortlinks a.external::after {
+  content: none !important;
+  display: none !important;
+}
+

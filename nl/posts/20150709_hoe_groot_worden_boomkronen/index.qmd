@@ -1,0 +1,260 @@
+---
+title: "Hoe groot worden boomkronen?"
+date: 2015-07-09
+update: 2015-10-03
+samenvatting: "Hoe groot worden boomkronen?"
+categories:
+ - Boomkroon
+ - QD
+ - Solitair
+ - Opstand
+lang: nl
+toc: true
+---
+
+Bij bosbeheer volgens de QD methode wordt gewerkt met toekomstbomen met grote boomkronen. Dat moet zorgen voor een rappe diameteraanwas. Daarvoor worden toekomstbomen 100% vrij gehouden van concurrentie. Dankzij dit beheer worden boomkronen breder dan we in het Nederlands bos tot nu toe gewend zijn. Maar waar hebben we het dan precies over? 
+Daarvoor kunnen we kijken naar het verband tussen kroondiameter en stamdiameter. Dit verband tussen stamdiameter en kroondiameter is al vaak onderzocht. En dat verband is sterk (Hasenauer 1997, Hein 2003, Widlowski 2005, Hemery et al. 2005). Hier zet ik een paar stukken uit de literatuur naast elkaar. Bij discussies over QD hoor je vaak: 'maar hoe groot worden die kronen dan nou?' Dit is stuk geeft een eerste beeld.
+
+## Relatie tussen DBH en kroondiameter bij solitaire bomen
+
+Hasenauer (1997) onderzocht in Oostenrijk kroondiameter, DBH, hoogte tot de kroonbasis, boomhoogte en verloop van solitair opgegroeide bomen. Met als achterliggende gedachte dat deze waardes de maximale waarden zijn voor deze eigenschappen voor de betreffende boomsoort. Hij vond voor de relaties tussen boomhoogte en boomdiameter de hieronder weergegeven relaties. <small>Hou in gedachte dat het hier gaat om bomen met een zeer lage kroonaanzet en dat de lijnen statistisch zijn bepaald (er zijn bij een bepaalde diameter ook bomen met een hogere en lagere diameter gevonden). De relaties zijn wel erg sterk (r<sup>2</sup> tussen 0,81 en 0,94).</small>
+
+```{r}
+#| label: fig-Hasenauer
+#| fig-cap: "Kroondiameter(m) van <u>solitair opgegroeide bomen</u> bij een bepaalde DBH(cm) volgens Hasenauer (1997). Bij dit onderzoek zijn bomen uit heel <u>Oostenrijk</u> opgemeten. Bovenstaande grafiek geeft de gegevens per boomsoort zonder rekening te houden met groeiplaats."
+#| echo: false
+#| message: false
+#| warning: false
+
+library(readr)
+library(ggplot2)
+library(plotly)
+library(dplyr)
+
+df <- read_csv("2015-07-09-boomkronen-hasenauer-1997.csv", show_col_types = FALSE)
+
+p <- ggplot(
+  df,
+  aes(
+    x = DBH,
+    y = Kroondiameter,
+    color = Boomsoort,
+    group = Boomsoort
+  )
+) +
+  geom_line(linewidth = .5) +
+  # geom_point(size = 2) +
+  labs(
+    x = "DBH",
+    y = "Kroondiameter",
+    color = "Boomsoort"
+  ) +
+  theme_minimal()
+
+ggplotly(p, 
+  tooltip = c("x", "y", "colour")
+  # height = 450
+  ) |>
+  layout(
+    paper_bgcolor = "rgba(0,0,0,0)",
+    plot_bgcolor  = "rgba(0,0,0,0)"
+  )
+```
+
+## Relatie tussen DBH en kroondiameter bij Es en Esdoorn
+
+Hein (2003) onderzocht dezelfde relatie bij Es en Esdoorn. Aanvullend heeft Hein gekeken of er een verschil is tussen de solitaire bomen en opstandsbomen. De relatie is in onderstaande grafiek weergegeven.
+
+```{r}
+#| label: fig-Hein
+#| fig-cap: "Kroondiameter(m) van <u>solitair opgegroeide bomen en in het bos opgegroeide bomen</u> bij een bepaalde DBH(cm) volgens Hein (2003). Bij dit onderzoek zijn bomen uit verschillende landen in Europa opgemeten. De kroondiameters voor de in de opstand opgegroeide bomen zijn berekend met een formule die rekening houdt met de leeftijd (hier heb ik voor iedere cm dbh 1 jaar genomen), de waarden van de solitaire bomen zijn leeftijdsonafhankelijk."
+#| echo: false
+#| message: false
+#| warning: false
+
+library(readr)
+library(ggplot2)
+library(plotly)
+library(dplyr)
+
+df <- read_csv("2015-07-09-boomkronen-hein-2003.csv", 
+  show_col_types = FALSE,
+  col_types = cols(
+    Boomsoort      = col_character(),
+    DBH            = col_integer(),
+    Leeftijd       = col_integer(),
+    Kroondiameter  = col_double()
+  )
+)
+
+p <- ggplot(
+  df,
+  aes(
+    x = DBH,
+    y = Kroondiameter,
+    color = Boomsoort,
+    group = Boomsoort
+  )
+) +
+  geom_line(linewidth = .5) +
+  # geom_point(size = 2) +
+  labs(
+    x = "DBH",
+    y = "Kroondiameter",
+    color = "Boomsoort"
+  ) +
+  theme_minimal()
+
+ggplotly(p, 
+  tooltip = c("x", "y", "colour")
+  # height = 450
+  ) |>
+  layout(
+    paper_bgcolor = "rgba(0,0,0,0)",
+    plot_bgcolor  = "rgba(0,0,0,0)"
+  )
+```
+
+
+Opvallend is hier dat de solitair opgegroeide bomen bij een bepaalde DBH een bredere kroon bezitten. Van solitaire bomen passen er dus minder bomen op een bepaalde oppervlakte dan van de opstandsbomen, bij een gelijke DBH. Het gaat hier niet om leeftijd. Dus bomen bereiken die diameter wel eerder, maar met een -in vergelijking- grotere kroon.
+
+Verder vond Hein dat solitaire opgegroeide bomen lager waren, en een andere kroonvorm hebben. Solitair opgegroeide essen hebben een bredere maar minder hoge kroon, ten opzichte van opstandsbomen. Dit verschil in kroonvorm tussen solitairen en opstandsbomen wordt -in ieder geval voor loofbomen- ook in andere onderzoeken gevonden. Solitaire bomen volgen een ander strategie dan opstandsbomen en wijzen meer grondstoffen toe aan stabiliteit en kroonexpansie (Uhl, Metzger en Seifert 2006 en bijvoorbeeld [in deze onderzoeksresultaten](http://www.wald-rlp.de/forschungsanstalt-fuer-waldoekologie-und-forstwirtschaft/forschungsschwerpunkte/forschungsfoerderung-mulewf/2005/19.html)).
+
+## Relatie tussen DBH en kroondiameter in het bos
+
+Hemery, Savill en Pryor (2005) onderzochten de relatie voor Groot-Brittannië en komen met voorbeelden voor de toepassing van deze relatie in de praktijk. Zij hebben alleen gemeten aan bomen in het bos, met uitzondering van walnoot. Bij walnoot gaat het net om solitaire bomen. 
+
+```{r}
+#| label: fig-Hemery
+#| fig-cap: "Kroondiameter(m) van <u>in bos opgegroeide bomen</u> bij een bepaalde DBH(cm) volgens Hemery ea (2005). Bij dit onderzoek zijn bomen in Groot-Brittannië opgemeten. Let op: de waardes voor walnoot betreffen wel solitaire bomen!"
+#| echo: false
+#| message: false
+#| warning: false
+
+df <- read_csv("2015-07-09-boomkronen-hemery_etal-2005.csv", show_col_types = FALSE)
+
+p <- ggplot(
+  df,
+  aes(
+    x = DBH,
+    y = Kroondiameter,
+    color = Boomsoort,
+    group = Boomsoort
+  )
+) +
+  geom_line(linewidth = .5) +
+  # geom_point(size = 2) +
+  labs(
+    x = "DBH",
+    y = "Kroondiameter",
+    color = "Boomsoort"
+  ) +
+  theme_minimal()
+
+ggplotly(p, 
+  tooltip = c("x", "y", "colour")
+  # height = 450
+  ) |>
+  layout(
+    paper_bgcolor = "rgba(0,0,0,0)",
+    plot_bgcolor  = "rgba(0,0,0,0)"
+  )
+```
+
+Zij onderzoeken de gegevens verder met de K/d relatie. De verhouding tussen kroondiameter en DBH. De K/d verhouding is als volgt gedefineerd.
+
+<div class="row">
+<div class="col-md-12">
+
+<script
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<pre>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+<mrow>
+  <mi>Kroondiameter-DBH relatie</mi>
+  <mo>=</mo>
+  <mfrac>
+    <mrow>
+      <mi>Kroondiameter in m (K)</mi>
+    </mrow>
+    <mrow>
+      <mi>DBH in m (d)</mi>
+    </mrow>
+  </mfrac>
+</mrow>
+</math>
+</pre>
+
+</div>
+</div>
+
+Onderstaande figuur geeft de K/d verhouding per boomsoort ten opzichte van de diameter op borsthoogte.
+
+
+```{r}
+#| label: fig-Hemery-KD
+#| fig-cap: "K/d van <u>in bos opgegroeide bomen</u> bij een bepaalde DBH(cm) volgens Hemery ea (2005). Bij dit onderzoek zijn bomen in Groot-Brittannië opgemeten. Waardes voor walnoot betreffen wel solitaire bomen."
+#| echo: false
+#| message: false
+#| warning: false
+
+df <- read_csv("2015-07-09-boomkronen-hemery_etal-2005.csv", show_col_types = FALSE)
+
+p <- ggplot(
+  df,
+  aes(
+    x = DBH,
+    y = KDratio,
+    color = Boomsoort,
+    group = Boomsoort
+  )
+) +
+  geom_line(linewidth = .5) +
+  # geom_point(size = 2) +
+  labs(
+    x = "DBH",
+    y = "Kd-ratio",
+    color = "Boomsoort"
+  ) +
+  theme_minimal()
+
+ggplotly(p, 
+  tooltip = c("x", "y", "colour")
+  # height = 450
+  ) |>
+  layout(
+    paper_bgcolor = "rgba(0,0,0,0)",
+    plot_bgcolor  = "rgba(0,0,0,0)"
+  )
+```
+
+Uit het onderzoek blijkt dat alle boomsoorten een hoge K/d ratio hebben als ze jong zijn en dat die afneemt met toenemende diameter. Hij lijkt van vanaf een diameter van 30cm te stabiliseren en vanaf dan veel langzamer te dalen. Jonge bomen hebben een relatief brede kroon ten opzichte van hun stamdiameter. Winterlinde, tamme kastanje en beuk zijn de drie boomsoorten met de smalste kronen bij de hoge diameters, maar ook de drie boomsoorten met de breedste kronen in het begin (buiten walnoot). Es en populier doen het net anders: ze beginnen met een smalle kroon, maar hebben bij een hoge diameter net een relatief brede kroon.
+
+## Toekomstbomenaantal en groeisnelheid
+
+Wat mij opviel aan de gegevens van Hemery e.a. ten opzichte van de gegevens van Hasenauer is dat beuk bij Hasenauer de breedste kroonvorm heeft ten opzichte van DBH, maar bij Hemery e.a. bijna de smalste! Dat past natuurlijk bij deze boomsoort met groot reactievermogen en hoog schaduwverdagend vermogen.
+
+Langhausen en Spiecker(2008) onderzochten verschillende dunningsregimes voor **beuk** en komen met de volgende mogelijke eindaantallen toekomstbomen per hectare bij een 120-jarige productietijd en een overschermingsgraad van 80% in relatie tot diameterbijgroei. Dit zijn voorlopige inschattingen voor een productieve standplaats (beuken tot 34 meter hoog). De invloed van het aantal toekomstbomen op de diameterbijgroei wordt hier in ieder geval duidelijk.
+
+
+gem. DBH toename id [mm/j] beuk |   2   |   3   |   4   | 5    |  6   |  8   | 10   
+------------------------------- | ----: | ----: | ----: | ---: | ---: | ---: | ---:
+Kroonbreedte [m]                |   3,4 |   5,9 |   8,5 | 11,0 | 13,6 | 18,7 | 23,8 
+Toekomstbomenaantal [N/ha]      | 897   | 290   | 142   | 84   | 55   | 29   | 18
+
+<div class="grafiek-bijschrift">DBH toename bij een bepaalde toekomstboomaantal en bijbehorende kroonbreedte voor beuk</div>
+
+De tabel hierboven geeft gelijk ook een goed beeld van hoeveel bomen er paseen op een hectare bij een bepaalde kroonbreedte.
+
+Voor **eik** geeft Spiecker (2007) [hier](http://www.fawf.wald-rlp.de/fileadmin/website/fawfseiten/fawf/downloads/Mitteilungen/Mitteilung-63_2007/Mitteilung-63_2007-5_Spiecker-%20Dickenwachstum%20und%20Astreinigung.pdf) meer inzicht in toekomstboomaantallen.
+
+## Literatuur
+
+* H. Hasenauer. 1997. **Dimensional relationships of open-grown trees in Austria**. Forest Ecology and Management 96 197-206
+* H. Hein. 2003 **Zur Steuerung von Astreinigung und Dickenwachstum bei Esche (Fraxinus/ excelsior L.) und Bergahorn (Acer pseudoplatanus L.)**. Inaugural-Dissertation zur Erlangung der Doktorwürde der Fakultät für Forst- und Umweltwissenschaften der Albert-Ludwigs-Universität Freiburg i. Brsg. [Link](http://www.freidok.uni-freiburg.de/volltexte/9265/pdf/DissertationSebastianHein.pdf "Zur Steuerung von Astreinigung und Dickenwachstum bei Esche und Bergahorn")
+* G.E.Hemery, P.S. Savill &amp; S.N. Pryor **Applications of the crown diameter–stem diameter relationship for different species of broadleaved trees**. Forest Ecology and Management 215 (2005) 285–294
+* J. Langshausen & H. Spiecker 2008. **Behandlungsoptionen zur Wertholzerzeugung bei der Baumart Buche** [link](http://sektionertragskunde.fvabw.de/band2008/Tag2008_08.pdf)
+* H. Spiecker. 2007. **Zur Steuerung des Dickenwachstums und der Astreinigung wertvoller Trauben- und Stieleichen** [link](http://www.fawf.wald-rlp.de/fileadmin/website/fawfseiten/fawf/downloads/Mitteilungen/Mitteilung-63_2007/Mitteilung-63_2007-5_Spiecker-%20Dickenwachstum%20und%20Astreinigung.pdf)
+* E. Uhl, H-G. Metzger, T. Seifert. 2006. **Dimension un Wachstum von Solitären Buchen und Eichen** [link](http://www.nw-fva.de/~nagel/SektionErtragskunde/band2006/Tag2006_06.pdf)
+* J-L Widlowski, M. Verstraete, B. Pinty &amp; N. Gobron. 2003. **Allometric Relations of Selected European Tree Species**. EC Joint Research Centre. [Link](http://publications.jrc.ec.europa.eu/repository/bitstream/111111111/874/1/EUR%2020855%20EN.pdf "Allometric Relations of Selected European Tree Species")

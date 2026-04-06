@@ -1,0 +1,64 @@
+<%
+let currentYear = null;
+%>
+
+<% for (const item of items) { %>
+
+  <% if (item.year !== currentYear) { %>
+    <% if (currentYear !== null) { %>
+:::
+:::
+    <% } %>
+
+::: {.pub-year-block}
+::: {.pub-year}
+<%= item.year %>
+:::
+::: {.pub-items}
+
+    <% currentYear = item.year; %>
+  <% } %>
+
+<%
+const authorsRaw = item.authors;
+const editorsRaw = item.book && item.book.editors;
+
+const namesRaw = authorsRaw || editorsRaw || [];
+const namesText = Array.isArray(namesRaw)
+  ? namesRaw.join(", ")
+  : String(namesRaw).replace(/,\s*/g, ", ");
+
+const roleLabel = authorsRaw ? "" : (editorsRaw ? " (red.)" : "");
+%>
+
+<%
+let platformText = "";
+
+if (
+  ["article-journal", "article-magazine"].includes(item.type)
+  && item.journal?.name
+) {
+  platformText = `<em>${item.journal.name}</em>`;
+}
+else if (item.type === "chapter" && item.book?.title) {
+  platformText = `In <em>${item.book.title}</em>`;
+}
+
+else if (item.type === "book") {
+  if (item.publisher?.name) {
+    platformText = `<em>${item.publisher.name}</em>`;
+  }
+}
+%>
+
+
+
+  - **[<%= item.title %>](<%- item.path %>)** <span class="pub-authors"><%= namesText %><%= roleLabel %></span> <span class="pub-platform"><%= platformText %></span>
+
+<% } %>
+
+<% if (currentYear !== null) { %>
+:::
+:::
+<% } %>
+

@@ -1,0 +1,13 @@
+---
+title: "Over deze website"
+lang: nl
+---
+
+![Etiënne Thomassen bij een excursie in het bos](/assets/img/20130413_etienne_thomassen.jpg){.full_smaller .no-caption}
+
+Ik ben Etiënne Thomassen. Dit is mijn **persoonlijke** website.
+
+Ik ben opgeleid als bosbouwer en heb gestudeerd in [Velp](http://www.larenstein.nl) *(Westerse Bosbouw)*, [Rottenburg am Neckar](http://www.hs-rottenburg.net/) *(Allgemeine Forstwirtschaft)* en 
+[Wageningen](http://www.wur.nl) *(Forest Ecology and Management)*. Nu werk ik bij 
+[Bosgroep Zuid Nederland](https://bosgroepen.nl/bosgroep-zuid-nederland/), als expertmedewerker Bosecologie en Bosbeheer. Ik ben
+promovendus aan [Wageningen Universiteit](https://www.wur.nl/nl/Personen/Etienne-EAH-Etienne-Thomassen.htm), waar ik onderzoek doe naar de effecten van vrijstelling van toekomstbomen.
