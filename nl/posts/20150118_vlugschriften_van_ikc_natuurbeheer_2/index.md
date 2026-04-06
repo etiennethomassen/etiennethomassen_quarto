@@ -15,8 +15,8 @@ Twee vlugschriften zijn in 1996 bijgewerkt, de originelen staan ook nog in deze 
 
 | Titel                                        | Thema   | Datum      |
 |----------------------------------------------|---------|------------|
-| [Wat voor _eisen_ stel ik aan een **toekomstboom**?](img/19960702_JP_vlugschrift_wat_voor_eisen_stel_ik_aan_een_toekomstboom.pdf) | Toekomstbomen | 02-07-1996 |
-| [Markering vliegschijven voor luchtfoto's](img/19960702_EA_vlugschrift_markering_vliegschijven_voor_luchtfotos.pdf)               | Luchtfoto's | 02-07-1996 |
+| [Wat voor _eisen_ stel ik aan een **toekomstboom**?](pdf/19960702_JP_vlugschrift_wat_voor_eisen_stel_ik_aan_een_toekomstboom.pdf) | Toekomstbomen | 02-07-1996 |
+| [Markering vliegschijven voor luchtfoto's](pdf/19960702_EA_vlugschrift_markering_vliegschijven_voor_luchtfotos.pdf)               | Luchtfoto's | 02-07-1996 |
 | [**Grondvlakbepaling** met Bitterlich-prisma](pdf/19960702_RJ_vlugschrift_grondvlakbepaling_met_bitterlich-prisma.pdf) | Meten | 02-07-1996 |
 | [Schatten van de lopende **aanwas**](pdf/19960702_RJ_vlugschrift_schatten_lopende_aanwas.pdf) | Meten | 02-07-1996 |
 | [Wat is **boniteit**?](pdf/19960619_JP_vlugschrift_wat_is_boniteit.pdf) | Bijgroei | 19-06-1996 |
